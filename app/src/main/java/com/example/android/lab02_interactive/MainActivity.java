@@ -8,7 +8,11 @@ import android.widget.TextView;
 import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
+    private final String mNT$ = "NT$";
     private int number;
+    private int mQuantity = 0;
+    private int mPrice = 5;
+    private StringBuilder mTotalPriceMessage = new StringBuilder(mNT$);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,8 +21,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void submitOrder(View view) {
-        display(2);
+        displaytotalPrice();
     }
+
 
     private void display(int number) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
@@ -33,8 +38,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void increment(View view) {
-        int quantity = getQuantity();
-        display(++quantity);
+        ++mQuantity;
+        displayQuantity();
+        resetTotolPrice();
     }
 
     private int getQuantity() {
@@ -44,9 +50,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void decrement(View view) {
-        int quantity = getQuantity();
-        if (quantity > 0) {
-            display(--quantity);
+        if (mQuantity > 0) {
+            --mQuantity;
+            displayQuantity();
+            resetTotolPrice();
+
         }
+    }
+
+    private void resetTotolPrice() {
+        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+        priceTextView.setText("");
+    }
+
+    private void displayQuantity() {
+        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+        quantityTextView.setText(String.valueOf(mQuantity));
+    }
+
+    private void displaytotalPrice() {
+        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+        int total = mPrice * mQuantity;
+        int startIndex = mNT$.length();
+        int endIndex = mTotalPriceMessage.length();
+        mTotalPriceMessage.delete(startIndex, endIndex).append(total)
+                .append(mQuantity == 0 ? "\nFree" : "\nThank you!");
+        priceTextView.setText(mTotalPriceMessage);
+        String myString = NumberFormat.getCurrencyInstance().format(total);
+        String message = myString + (mQuantity == 0 ? "\nFree" : "\nThank you!");
+        priceTextView.setText(message);
     }
 }
