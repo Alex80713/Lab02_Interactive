@@ -109,5 +109,22 @@ public class MainActivity extends AppCompatActivity {
         clearPriceMessageString();
         displayPriceMessage();
     }
+    public void  mediator(View view) {
+        switch (view.getId()) {
+            case R.id.toppings_checkbox:
+                clickToppings(view);
+                break;
+            case R.id.increment_button:
+                increment(view);
+                break;
+            case R.id.decrement_button:
+                decrement(view);
+                break;
+            case R.id.order_button:
+                submitOrder(view);
+                break;
 
+        }
+
+    }
 }
