@@ -9,7 +9,22 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.android.lab02_interactive.MainActivity">
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Toppings"
+        android:textSize="16sp"
+        />
+    <CheckBox
+        android:id="@+id/toppings_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:paddingLeft="24dp"
+        android:text="泡菜"
+        android:textSize="16sp"
+        android:onClick="clickToppings"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,9 +33,9 @@
         android:textAllCaps="true" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        >
 
 
 
@@ -54,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginTop="16dp"
-        android:text="Price"
+        android:text="Order Summary"
         android:textAllCaps="true"
         android:textSize="16sp" />
 
@@ -62,7 +77,6 @@
         android:id="@+id/price_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:text="NT$0"
         android:textColor="@android:color/black"
         android:textSize="16sp" />
